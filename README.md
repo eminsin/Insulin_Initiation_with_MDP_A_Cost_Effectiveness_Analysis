@@ -4,7 +4,6 @@
 
 <p align="center">
   <img width="600" height="500" alt="image_summary of the project" src="https://github.com/user-attachments/assets/ecf10500-7412-4c89-b4ff-d26289c9795c" />
-" />
 </p>
 
 <h1 align="center">Insulin Initiation with MDP A Cost-Effectiveness Analysis</h1>
