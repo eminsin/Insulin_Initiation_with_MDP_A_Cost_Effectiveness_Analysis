@@ -19,7 +19,7 @@
 ---
 
 ## 🎯 Project Overview
-The thesis develops a **_finite-horizon Markov Decision Process (MDP)_** that determines the **_optimal timing for initiating insulin therapy_** in Type 2 Diabetes Mellitus (T2DM) by integrating disease progression, treatment history, costs, and quality-adjusted life years (QALYs). It provides a **_decision-support framework_** that reduces clinical inertia, improves patient outcomes, and minimizes healthcare expenditures.
+My graduation dissertation (2019) develops a **_finite-horizon Markov Decision Process (MDP)_** that determines the **_optimal timing for initiating insulin therapy_** in Type 2 Diabetes Mellitus (T2DM) by integrating disease progression, treatment history, costs, and quality-adjusted life years (QALYs). It provides a **_decision-support framework_** that reduces clinical inertia, improves patient outcomes, and minimizes healthcare expenditures.
 
 
 ---
@@ -33,75 +33,91 @@ Although insulin is highly effective in achieving glycemic control, its initiati
 ## 🔬 Laboratory
 
 **1. Markov Decision Process (MDP) Construction**  
+
 The core analytical engine of the thesis is a **finite‑horizon Markov Decision Process** designed to model treatment progression in Type 2 Diabetes. The MDP is defined by:  
 
 _State Space Design_  
-Each health state is a structured tuple combining:
+Each health state (with the priority of weight-control, no comorbidity presence) is a structured tuple combining:
 + HbA1c control status
 + BMI category
-+ Comorbidity presence (ASCVD, CKD, HF)
-+ Current therapy stage (metformin, dual therapy, triple therapy)  
-+ Drug‑use history
-
-These elements are explicitly listed in Table 4.1.1 and Table 4.1.2 of the thesis.
++ Drug‑use history (metformin, dual therapy, triple therapy)  
 
 _Action Set_  
 Three clinically relevant actions:
-+ Wait
-+ Add new oral glucose‑lowering agent
++ Wait in the current therapy
++ Add new oral glucose‑lowering agent 
 + Initiate insulin therapy
 
 _Transition Probabilities_  
-Transition matrices for each action (Tables 4.2.1.2–4.2.1.4) were estimated using:
-+ Published clinical progression rates
-+ HbA1c response distributions for MET, dual, and triple therapy
-+ Insulin initiation response data
-+ BMI‑linked risk adjustments
+Transition matrices for each action were estimated from the medical publications that quantify:
++ HbA1c reduction per therapy class
++ BMI‑related risk changes
++ Insulin effectiveness and hypoglycemia risk
++ Failure rates of metformin, dual therapy, and triple therapy
 
 These probabilities satisfy the Markov property:
 
-**formula**
+```math
+\sum_{j} p_{ij}(a) = 1
+```  
 
 _Finite Horizon_  
+The model is evaluated for 20 years between 40 and 60 years of age.  
 Decision epochs are set to 6‑month intervals, reflecting guideline‑recommended follow‑up frequency.
 
 **2. Reward Function Construction**  
-The reward function integrates clinical utility and economic cost, forming a health‑economic objective:  
 
-**formula**
+The reward function integrates **clinical utility** and **economic cost**, forming a health‑economic objective:  
 
-<ins>Components:</ins>
+```math
+R(s,a) = \text{QALY}(s,a) - \text{Cost}(s,a)
+```
+QALYs are computed using:
 
-_QALY Estimation_
-+ Baseline utilities for each health state (Table 4.2.2.1)
-+ Utility gains from improved HbA1c under each therapy (Table 4.2.2.2)
-+ Disutility penalties for uncontrolled HbA1c and therapy side effects (Table 4.2.2.3)
+```math
+QALY = u(s,a) \cdot \Delta t
+```
 
-QALYs are discounted using a factor consistent with health‑economic standards.
+_Components:_
 
-_Cost Modelling_  
-Annualized direct medical costs for:
-+ Metformin
-+ Dual therapy
-+ Triple therapy
-+ Insulin therapy
-(Table 4.2.3.1)
++ QALY Estimation
+  + Baseline utilities for each health state
+  + Utility gains from improved HbA1c under each therapy
+  + Disutility penalties for uncontrolled HbA1c and therapy side effects (weight gain)
 
-Costs include medication, monitoring, and complication‑related expenditures.
+  QALYs are discounted using a factor consistent with health‑economic standards.
 
-_Monetary Valuation of QALYs_  
-QALYs are converted to monetary units using a willingness‑to‑pay threshold (e.g., $100,000 per QALY), enabling unified reward scaling.
++ Cost Modelling  
+
+  Costs are grouped in three main categories: 
+  1) total medical cost (inpatient, outpatient, emergency room visits, urgent care visits, calls to physicians)
+  2) total drug (medication) cost
+  3) total cost of weight increase which may occur as an effect of the therapies.
+
++ Monetary Valuation of QALYs  
+
+  QALYs are converted to monetary units using a willingness‑to‑pay threshold (e.g., $50,000 per QALY), enabling unified reward scaling.
 
 **3. Policy Optimization**  
+
 The optimal policy is computed via **backward induction**:
 
-**formula**
+```math
+V_t(s) = \max_{a \in A} \left[ R(s,a) + \sum_{s'} p_{ss'}(a) \, V_{t+1}(s') \right]
+```
+where:
+
+- \( V_t(s) \): value of state \(s\) at decision epoch \(t\)
+- \( A \): set of available actions (wait, add drug, initiate insulin)
+- \( R(s,a) \): reward combining QALYs and costs
+- \( p_{ss'}(a) \): transition probability from state \(s\) to \(s'\) under action \(a\)
 
 This dynamic programming approach yields:
-+ Optimal action per state (Table 5.1.1)
-+ Value function trajectories (Table 5.1.2)
++ Optimal action per state
++ Value function trajectories
 
 **4. Sensitivity Analysis Framework**  
+
 To test robustness, the thesis performs **one‑way sensitivity analyses** on:
 + Triple therapy cost (±$500–$1000)
 + Disutility of uncontrolled HbA1c (0.25 → 0.50)
@@ -112,6 +128,7 @@ To test robustness, the thesis performs **one‑way sensitivity analyses** on:
 Each scenario re‑runs the MDP to observe shifts in optimal insulin timing.
 
 **5. Data Sources & Parameterization**  
+
 Parameters were derived from:
 + ADA and EASD guidelines
 + UKPDS, ACCORD, and other landmark trials
@@ -120,6 +137,7 @@ Parameters were derived from:
 + Utility values from validated QALY literature
 
 **6. Computational Implementation**  
+
 Although the thesis does not specify code, the modelling implicitly uses:
 Matrix‑based cohort simulation
 Dynamic programming loops for value iteration
