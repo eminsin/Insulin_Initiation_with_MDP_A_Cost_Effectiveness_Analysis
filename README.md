@@ -107,23 +107,31 @@ V_t(s) = \max_{a \in A} \left[ R(s,a) + \sum_{s'} p_{ss'}(a) \, V_{t+1}(s') \rig
 ```
 where:
 
-- \( V_t(s) \): value of state \(s\) at decision epoch \(t\)
-- \( A \): set of available actions (wait, add drug, initiate insulin)
-- \( R(s,a) \): reward combining QALYs and costs
-- \( p_{ss'}(a) \): transition probability from state \(s\) to \(s'\) under action \(a\)
+- *V*<sub>t</sub>(s) : value of state *s* at decision epoch *t*
+- *A* : set of available actions
+- *R(s,a)* : reward combining QALYs and costs
+- *p<sub>ss'</sub>(a)* : transition probability from state *s* to *s'* under action *a*
 
 This dynamic programming approach yields:
-+ Optimal action per state
++ Optimal action per state:  
+The optimal policy $\pi^*$ selects the best action for each state:
+
+```math
+\pi^*(s) = \arg\max_{a \in A} \left[ R(s,a) + \sum_{s'} p_{ss'}(a) V_{t+1}(s') \right]
+```
+
 + Value function trajectories
 
 **4. Sensitivity Analysis Framework**  
 
 To test robustness, the thesis performs **one‑way sensitivity analyses** on:
-+ Triple therapy cost (±$500–$1000)
-+ Disutility of uncontrolled HbA1c (0.25 → 0.50)
-+ Discount factor (0.80 → 0.81)
-+ QALY monetary value ($100k → $200k)
-+ Patient vs payer perspective (Table 5.2.11)
++ Triple therapy cost
++ Disutility of uncontrolled HbA1c
++ Discount factor
++ QALY monetary value
++ Starter utility of insulin therapy
++ Metformin therapy cost 
++ Patient vs payer perspective
 
 Each scenario re‑runs the MDP to observe shifts in optimal insulin timing.
 
@@ -132,17 +140,18 @@ Each scenario re‑runs the MDP to observe shifts in optimal insulin timing.
 Parameters were derived from:
 + ADA and EASD guidelines
 + UKPDS, ACCORD, and other landmark trials
-+ Published HbA1c reduction estimates for MET, SU, GLP‑1 RA, SGLT2i, DPP‑4i
++ Published HbA1c reduction estimates for MET, SU, GLP‑1 RA, SGLT2i, DPP‑4i, insulin
 + Cost data from ADA (2018) and US healthcare expenditure reports
 + Utility values from validated QALY literature
 
 **6. Computational Implementation**  
 
-Although the thesis does not specify code, the modelling implicitly uses:
-Matrix‑based cohort simulation
-Dynamic programming loops for value iteration
-Numerical handling of discounting and reward aggregation
-Structured state enumeration based on Table 4.1.2
+The results are obtained from the MATLAB R2018b computer program.  
+Although the repo does not specify code for now, the modelling implicitly uses:
++ Matrix‑based cohort simulation
++ Dynamic programming loops for value iteration
++ Numerical handling of discounting and reward aggregation
++ Structured state enumeration 
 
 
 
