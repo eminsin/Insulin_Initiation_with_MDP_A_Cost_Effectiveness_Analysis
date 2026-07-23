@@ -155,9 +155,35 @@ Although the repo does not specify code for now, the modelling implicitly uses:
 
 
 
+---
 
+## 🧠 Results
 
+🧮 Controlling weight is almost as important as blood sugar control
 
+🧮 The effect of cost and QALY gains on initiation of insulin, which varies according to the type of therapy, demonstrates the importance of the type of therapy used
+
+🧮 The uncontrolled HbA1c and BMI values together negates the type of dual therapy used after a certain age (58 years) and makes it important to start insulin directly
+
+🧮 The use of GLP1 RA is not preferred because it is injectable and more expensive than SGLT 2i
+
+🧮 Unlike the other types of therapy, insulin therapy causes a reduction in a patient's QALY in total from year to year because of its weight gain effect
+
+🧮 For the triple therapy, the result has changed at a cost of $ 500 instead of $ 2000
+
+🧮 In order to see the effet of non-control of HbA1c level, the results were evaluated for lower and higher values than the value we considered (0.16). It was found that a disutility up to 0.07 does not actually make a difference with the absence of it. Early insulin initiation is recommended for a larger value of 0.25, while direct insulin initiation has been detected in dual and triple therapies for a high value of 0.50 
+
+🧮 By testing the discount factor, it was observed that if the value is between 0.81 and 0.80, it may be advisable to eliminate the difference between dual therapies and start insulin directly after 40 years of age.
+
+🧮 It was observed that doubling the putative cost-effectiveness ratio resulted in initiating insulin treatment earlier, and when it was quadrupled, the individual should stay on the dual therapy if (s)he uses a dual therapy and more wait action would make sense in general
+
+🧮 The results were seen when the larger, compared to other starter utilities (0.68 and 0.80), insulin initiation starter utility (0.813) had an occasional value. While the results of the base case already represent the value for greater than 0.80, it was tested by assigning a value of 0.70 as it would be difficult to start insulin if it was less than 0.68
+
+🧮 The fact that monotherapy with much lower cost than other costs resulted in continuous wait action led us to see how the result changes if we accept this value close to other values. As a result, it was suggested action 𝐴, which can be considered more logical, for the health state of mono therapy when the two parameters (HbA1c and BMI) are not under control
+
+🧮 the changes in the optimal policy were observed when the perspective is changed to the patient perspective by resetting the cost of all types of therapies. In this way, it was determined how the perspective can make big differences in optimal policy
+
+... to be continued
 
 ---
 
@@ -167,23 +193,9 @@ Although the repo does not specify code for now, the modelling implicitly uses:
 
 ---
 
-## 🧠 Notebook Topics
-
-### 🧮 1.
-
-### 🧮 2.
-
-### 🧮 3.
-
-### 🧮 4.
-
-
-
----
-
 ## 🛠 Built With
 
-
+`MATLAB` `R (to come)`
 
 
 ---
