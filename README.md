@@ -26,7 +26,7 @@ My graduation dissertation (2019) develops a **_finite-horizon Markov Decision P
 
 ## 🐛 Problem Context and Motivation
 Type 2 Diabetes is a rapidly growing global health burden, responsible for escalating healthcare costs, increased risk of cardiovascular, renal, and ocular complications, significant reductions in quality of life.
-Although insulin is highly effective in achieving glycemic control, its initiation is often delayed due to patient, clinician, and systemic barriers. This delay -known as clinical inertia- leads to prolonged hyperglycemia and higher complication risks. My thesis addresses the central question: _"When is the optimal time to initiate insulin therapy for a T2DM patient, given their health state and treatment history?"_ This is a complex decision under uncertainty - perfect for mathematical modeling.
+Although insulin is highly effective in achieving glycemic control, its initiation is often delayed due to patient, clinician, and systemic barriers. This delay -known as clinical inertia- leads to prolonged hyperglycemia and higher complication risks. My thesis addresses the central question: _"When is the optimal time to initiate insulin therapy for a T2DM patient, given their health state and treatment history?"_ This is a complex **decision under uncertainty** - perfect for **mathematical modeling**.
 
 ---
 
