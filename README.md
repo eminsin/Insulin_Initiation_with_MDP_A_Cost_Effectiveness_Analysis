@@ -6,7 +6,7 @@
   <img width="600" height="500" alt="image_summary of the project" src="https://github.com/user-attachments/assets/ecf10500-7412-4c89-b4ff-d26289c9795c" />
 </p>
 
-<h1 align="center">Insulin Initiation with MDP A Cost-Effectiveness Analysis</h1>
+<h1 align="center">Insulin Initiation with MDP A Cost-Utility Analysis</h1>
 
 
 
@@ -192,7 +192,7 @@ Although the repo does not specify code for now, the modelling implicitly uses:
 + Integration of clinical guidelines and economic factors.
 + A structured framework that reduces clinical inertia in diabetes management.
 + Helps clinicians decide **when to escalate therapy**.
-+ Provides policymakers with **cost-effectiveness insights**.
++ Provides policymakers with **cost-utility insights**.
 + Offers patients a clearer understanding of treatment pathways.
 
 
